@@ -1,0 +1,234 @@
+#include "TXLib.h"
+
+struct button
+{
+    int x;
+    int y;
+    const char* text;
+    string category;
+};
+
+struct picture
+{
+    int x;
+    int y;
+    HDC image;
+    int w;
+    int h;
+    bool visible;
+    string category;
+};
+
+    void drawbutton(button btn)
+    {
+        txSetColor (TX_BLACK, 3);
+        txSetFillColor (TX_WHITE);
+        Win32::RoundRect (txDC(), btn.x, btn.y, btn.x+155, btn.y+40, 5, 5);
+        txSelectFont("Comic Sans MS", 25);
+        txDrawText(btn.x, btn.y, btn.x+155, btn.y+40, btn.text);
+    }
+
+bool click(button btn)
+{
+    if (txMouseButtons() == 1 &&
+            txMouseX() >= btn.x &&
+            txMouseY() >= btn.y &&
+            txMouseX() <= btn.x+155 &&
+            txMouseY() <= btn.y+40)
+            return 1;
+     else
+     return 0;
+}
+
+
+void drawpicturemenu(picture pct)
+{
+    if(pct.visible)
+        Win32::TransparentBlt(txDC(), pct.x, pct.y, 128, 128, pct.image, 0, 0, pct.w, pct.h, TX_WHITE);
+}
+
+void drawpicturecentral(picture pct)
+{
+    if(pct.visible)
+        Win32::TransparentBlt(txDC(), pct.x, pct.y, 64, 64, pct.image, 0, 0, pct.w, pct.h, TX_WHITE);
+}
+
+int main()
+    {
+    txCreateWindow (1366, 780);
+    txTextCursor (false);
+    txDisableAutoPause();
+    const int count_btn = 3;
+    const int count_pic = 22;
+    int select=-1;
+    bool mouse_release=false;
+    int numberpic=0;
+
+    HDC BG = txLoadImage("Images/Хребет.bmp");
+    HDC Map = txLoadImage("Images/Карта.bmp");
+
+
+    picture menupicture[count_pic];
+    menupicture[0] = {50, 625, txLoadImage("Images/Decor/Крупная/Кухонная_полка.bmp"), 256, 256, false, "Крупная"};
+    menupicture[1] = {150, 625, txLoadImage("Images/Decor/Крупная/Полка_для_свитков.bmp"), 256, 256, false, "Крупная"};
+    menupicture[2] = {260, 625, txLoadImage("Images/Decor/Крупная/Благославление_ветра.bmp"), 256, 256, false, "Крупная"};
+    menupicture[3] = {370, 625, txLoadImage("Images/Decor/Крупная/Каменный_очаг.bmp"), 256, 256, false, "Крупная"};
+    menupicture[4] = {480, 625, txLoadImage("Images/Decor/Крупная/Мягкий_диван.bmp"), 256, 256, false, "Крупная"};
+    menupicture[5] = {590, 625, txLoadImage("Images/Decor/Крупная/Набор_полок.bmp"), 256, 256, false, "Крупная"};
+    menupicture[6] = {700, 625, txLoadImage("Images/Decor/Крупная/Складная_ширма.bmp"), 256, 256, false, "Крупная"};
+    menupicture[7] = {810, 625, txLoadImage("Images/Decor/Крупная/Стол_Фавония.bmp"), 256, 256, false, "Крупная"};
+    menupicture[8] = {920, 625, txLoadImage("Images/Decor/Крупная/Цветочная_ширма.bmp"), 256, 256, false, "Крупная"};
+    menupicture[9] = {50, 625, txLoadImage("Images/Decor/Мелкая/Ароматное_великолепие.bmp"), 256, 256, false, "Мелкая"};
+    menupicture[10] = {150, 625, txLoadImage("Images/Decor/Мелкая/Мондшдадтский_коврик.bmp"), 256, 256, false, "Мелкая"};
+    menupicture[11] = {260, 625, txLoadImage("Images/Decor/Мелкая/Непоколебимая_решимость.bmp"), 256, 256, false, "Мелкая"};
+    menupicture[12] = {370, 625, txLoadImage("Images/Decor/Мелкая/Переносная_печь.bmp"), 256, 256, false, "Мелкая"};
+    menupicture[13] = {480, 625, txLoadImage("Images/Decor/Мелкая/Тумбочка_из_березы.bmp"), 256, 256, false, "Мелкая"};
+    menupicture[14] = {590, 625, txLoadImage("Images/Decor/Мелкая/Чайный_стол.bmp"), 256, 256, false, "Мелкая"};
+    menupicture[15] = {700, 625, txLoadImage("Images/Decor/Мелкая/Чайный_стул.bmp"), 256, 256, false, "Мелкая"};
+    menupicture[16] = {810, 625, txLoadImage("Images/Decor/Мелкая/Чистое_небо.bmp"), 256, 256, false, "Мелкая"};
+    menupicture[17] = {50, 625, txLoadImage("Images/Decor/Животные/Тигровая_кошка.bmp"), 256, 256, false, "Животные"};
+    menupicture[18] = {150, 625, txLoadImage("Images/Decor/Животные/Полярная_кошка.bmp"), 256, 256, false, "Животные"};
+    menupicture[19] = {260, 625, txLoadImage("Images/Decor/Животные/Инспекторская_кошка.bmp"), 256, 256, false, "Животные"};
+    menupicture[20] = {370, 625, txLoadImage("Images/Decor/Животные/Сиба-ину.bmp"), 256, 256, false, "Животные"};
+    menupicture[21] = {480, 625, txLoadImage("Images/Decor/Животные/Полярная_гончая.bmp"), 256, 256, false, "Животные"};
+
+    picture centralpicture[count_pic];
+
+    button btn[count_btn];
+    btn[0] = {55, 580, "Крупная мебель", "Крупная"};
+    btn[1] = {225, 580, "Мелкая мебель", "Мелкая"};
+    btn[2] = {395, 580, "Животные", "Животные"};
+    //btn[] = {, , ""};
+
+
+
+
+
+    while (!GetAsyncKeyState (VK_ESCAPE))
+    {
+    txBegin();
+    txBitBlt (txDC(), 0, 0, 1366, 780, BG, 0, 0);
+    Win32::TransparentBlt (txDC(), 700, 50, 600, 700, Map, 0, 0, 600, 700, TX_WHITE);
+
+
+
+
+/* меню (пригодится)
+    txSetColor (TX_BLACK, 3);
+    txRectangle (49, 733, 1330, 765);
+    txSelectFont ("Comic Sans MS", 30);
+    txDrawText (471, 47, 895, 119, "Название под вопросом");
+    txDrawText (565, 186, 797, 237, "Начать");
+    txDrawText (565, 256, 797, 307, "Настройки");
+    txDrawText (565, 326, 797, 377, "Помощь");
+    txDrawText (565, 396, 797, 447, "Выход");
+    txSelectFont ("Comic Sans MS", 20);
+    txDrawText (49, 733, 1330, 765, "Стоит понимать, что программа ещё недоработанная, все использованные материалы пренадлежат компании MiHoYo и авторам использованных работ.");
+     */
+
+
+
+    for(int nk=0; nk<count_btn; nk++)
+    {
+        drawbutton(btn[nk]);
+    }
+
+    for(int npic=0; npic<count_pic; npic++)
+    {
+        drawpicturemenu(menupicture[npic]);
+    }
+
+    for(int npic=0; npic<count_pic; npic++)
+    {
+        drawpicturecentral(centralpicture[npic]);
+    }
+
+    for(int nk=0; nk <count_btn; nk++)
+    {
+        if (click(btn[nk]))
+            {
+             for (int npic=0; npic<count_pic; npic++)
+                {
+                    menupicture[npic].visible=false;
+                    if (menupicture[npic].category == btn[nk].category)
+                        {
+                            menupicture[npic].visible=true;
+                        }
+                }
+            }
+    }
+
+    for(int npic=0; npic<count_pic; npic++)
+    {
+     if (txMouseButtons() == 1 &&
+            menupicture[npic].visible &&
+            txMouseX() >= menupicture[npic].x &&
+            txMouseY() >= menupicture[npic].y &&
+            txMouseX() <= menupicture[npic].x+128 &&
+            txMouseY() <= menupicture[npic].y+128)
+            {
+
+            //Проверка отжатия левой кнопки мыши
+                    while(txMouseButtons() == 1)
+                    {
+                    txSleep(10);
+                    }
+
+
+             centralpicture[numberpic] = {500,
+                                     200,
+                                     menupicture[npic].image,
+                                     menupicture[npic].w,
+                                     menupicture[npic].h,
+                                     menupicture[npic].visible,
+                                     menupicture[npic].category};
+
+               numberpic++;
+            }
+
+    }
+
+
+    for(int npic=0; npic<count_pic; npic++)
+    {
+        if (txMouseButtons() == 1 &&
+            centralpicture[npic].visible &&
+            txMouseX() >= centralpicture[npic].x &&
+            txMouseY() >= centralpicture[npic].y &&
+            txMouseX() <= centralpicture[npic].x+centralpicture[npic].w &&
+            txMouseY() <= centralpicture[npic].y+centralpicture[npic].h)
+            {
+            select=npic;
+            mouse_release=false;
+            }
+    }
+
+    if(select>=0)
+    {
+        if(txMouseButtons() == 1 && !mouse_release)
+           {
+           centralpicture[select].x = txMouseX() - 32;
+           centralpicture[select].y = txMouseY() - 32;
+           }
+
+        else
+            if (txMouseButtons() != 1)
+                {
+                mouse_release=true;
+                }
+    }
+
+
+
+
+
+    txEnd();
+     }
+
+    txDeleteDC(BG);
+    txDeleteDC(Map);
+
+
+    return 0;
+    }
+

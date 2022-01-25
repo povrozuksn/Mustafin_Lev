@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Lev build log</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+<tt>
+Build started on: <u>19-01-2022 at 22:16.54</u><br />
+Build ended on: <u>19-01-2022 at 22:16.57</u><p />
+<b>-------------- Build: Debug in Lev (compiler: GNU GCC (MinGW) Compiler - Strict + Save (SINGLE FILES ONLY, REGUIRES GIT))---------------</b><br />
+g++git-auto.bat "C:\Users\root\source\repos\Lev\main.cpp" -o bin\Debug\Lev.exe -mwindows  -Wall -fexceptions  -g  -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wmissing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC<br />
+------------------------------------------------------------------------------------------------------<br />
+Compilation ERRORS:<br />
+<br />
+C:\Users\root\source\repos\Lev\main.cpp: In function 'void drawbutton(button)':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:22:10: warning: no previous declaration for 'void drawbutton(button)' [-Wmissing-declarations]</font><br />
+     void drawbutton(button btn)<br />
+          ^<br />
+C:\Users\root\source\repos\Lev\main.cpp: In function 'bool click(button)':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:31:6: warning: no previous declaration for 'bool click(button)' [-Wmissing-declarations]</font><br />
+ bool click(button btn)<br />
+      ^<br />
+C:\Users\root\source\repos\Lev\main.cpp: In function 'void drawpicturemenu(picture)':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:44:6: warning: no previous declaration for 'void drawpicturemenu(picture)' [-Wmissing-declarations]</font><br />
+ void drawpicturemenu(picture pct)<br />
+      ^<br />
+C:\Users\root\source\repos\Lev\main.cpp: In function 'void drawpicturecentral(picture)':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:50:6: warning: no previous declaration for 'void drawpicturecentral(picture)' [-Wmissing-declarations]</font><br />
+ void drawpicturecentral(picture pct)<br />
+      ^<br />
+C:\Users\root\source\repos\Lev\main.cpp: In constructor 'picture::picture()':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:11:8: warning: 'picture::x' should be initialized in the member initialization list [-Weffc++]</font><br />
+ struct picture<br />
+        ^<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:11:8: warning: 'picture::y' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:11:8: warning: 'picture::image' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:11:8: warning: 'picture::w' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:11:8: warning: 'picture::h' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:11:8: warning: 'picture::visible' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:11:8: warning: 'picture::category' should be initialized in the member initialization list [-Weffc++]</font><br />
+C:\Users\root\source\repos\Lev\main.cpp: In function 'int main()':<br />
+C:\Users\root\source\repos\Lev\main.cpp:71:34: note: synthesized method 'picture::picture()' first required here <br />
+     picture menupicture[count_pic];<br />
+                                  ^<br />
+C:\Users\root\source\repos\Lev\main.cpp: In constructor 'button::button()':<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:3:8: warning: 'button::x' should be initialized in the member initialization list [-Weffc++]</font><br />
+ struct button<br />
+        ^<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:3:8: warning: 'button::y' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:3:8: warning: 'button::text' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:3:8: warning: 'button::category' should be initialized in the member initialization list [-Weffc++]</font><br />
+C:\Users\root\source\repos\Lev\main.cpp: In function 'int main()':<br />
+C:\Users\root\source\repos\Lev\main.cpp:97:25: note: synthesized method 'button::button()' first required here <br />
+     button btn[count_btn];<br />
+                         ^<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:210:50: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+            centralpicture[select].x = txMouseX() - 32;<br />
+                                                  ^<br />
+<font color="#0000ff">C:\Users\root\source\repos\Lev\main.cpp:211:50: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+            centralpicture[select].y = txMouseY() - 32;<br />
+                                                  ^<br />
+------------------------------------------------------------------------------------------------------<br />
+Autosaving to the Git repository in C:/Users/root/source/repos/Lev/.git-auto/... <br />
+Output size is 2,28 MB<br />
+<font color="#0000ff">Process terminated with status 0 (0 minutes, 2 seconds)</font><br />
+<font color="#0000ff">0 errors, 17 warnings (0 minutes, 2 seconds)</font><br />
+</tt>
+</body>
+</html>

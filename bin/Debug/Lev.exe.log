@@ -1,0 +1,174 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\Lev\bin\Debug\Lev.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13628, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRE0, Thread: 0x17EC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423045 in C:\Users\root\source\repos\Lev\bin\Debug\Lev.exe: txBitBlt() at c:/codeblocks/mingw/include/txlib.h (13628)
+
+# 1 0x0042EB3A in C:\Users\root\source\repos\Lev\bin\Debug\Lev.exe: main() at C:/Users/root/source/repos/Lev/main.cpp (110):
+
+    108:     {
+    109:     txBegin();
+=>  110:     txBitBlt (txDC(), 0, 0, 1366, 780, BG, 0, 0);
+    111:     Win32::TransparentBlt (txDC(), 100, 50, 400, 500, Map, 0, 0, 600, 700, TX_WHITE);
+    112: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at c:\codeblocks\mingw\include\txlib.h (13628):
+
+  13626:     {
+  13627: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13628: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13629: 
+  13630: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in int main() at C:\Users\root\source\repos\Lev\main.cpp (110):
+
+    108:     {
+    109:     txBegin();
+=>  110:     txBitBlt (txDC(), 0, 0, 1366, 780, BG, 0, 0);
+    111:     Win32::TransparentBlt (txDC(), 100, 50, 400, 500, Map, 0, 0, 600, 700, TX_WHITE);
+    112: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Dec  9 2021 08:27:54, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 09 2021 08:27:57
+
+Run file:	C:\Users\root\source\repos\Lev\bin\Debug\Lev.exe
+Directory:	C:\Users\root\source\repos\Lev
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\Lev\bin\Debug\Lev.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13628, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRE0, Thread: 0x305C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423045 in C:\Users\root\source\repos\Lev\bin\Debug\Lev.exe: txBitBlt() at c:/codeblocks/mingw/include/txlib.h (13628)
+
+# 1 0x0042EB3A in C:\Users\root\source\repos\Lev\bin\Debug\Lev.exe: main() at C:/Users/root/source/repos/Lev/main.cpp (110):
+
+    108:     {
+    109:     txBegin();
+=>  110:     txBitBlt (txDC(), 0, 0, 1366, 780, BG, 0, 0);
+    111:     Win32::TransparentBlt (txDC(), 100, 50, 400, 500, Map, 0, 0, 600, 700, TX_WHITE);
+    112: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at c:\codeblocks\mingw\include\txlib.h (13628):
+
+  13626:     {
+  13627: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13628: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13629: 
+  13630: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in int main() at C:\Users\root\source\repos\Lev\main.cpp (110):
+
+    108:     {
+    109:     txBegin();
+=>  110:     txBitBlt (txDC(), 0, 0, 1366, 780, BG, 0, 0);
+    111:     Win32::TransparentBlt (txDC(), 100, 50, 400, 500, Map, 0, 0, 600, 700, TX_WHITE);
+    112: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Dec  9 2021 08:28:45, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 09 2021 08:28:47
+
+Run file:	C:\Users\root\source\repos\Lev\bin\Debug\Lev.exe
+Directory:	C:\Users\root\source\repos\Lev
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Документы\!\Инженерка\С++\Group_2_1\Мустафин Лев\Lev\bin\Debug\Lev.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13628, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRE0, Thread: 0x2EC0 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423045 in C:\Документы\!\Инженерка\С++\Group_2_1\Мустафин Лев\Lev\bin\Debug\Lev.exe: txBitBlt() at c:/codeblocks/mingw/include/txlib.h (13628)
+
+# 1 0x0042EB2A in C:\Документы\!\Инженерка\С++\Group_2_1\Мустафин Лев\Lev\bin\Debug\Lev.exe: main() at C:/Users/root/source/repos/Lev/main.cpp (110):
+
+    108:     {
+    109:     txBegin();
+=>  110:     txBitBlt (txDC(), 0, 0, 1366, 780, BG, 0, 0);
+    111:     Win32::TransparentBlt (txDC(), 700, 50, 600, 700, Map, 0, 0, 600, 700, TX_WHITE);
+    112: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at c:\codeblocks\mingw\include\txlib.h (13628):
+
+  13626:     {
+  13627: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13628: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13629: 
+  13630: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in int main() at C:\Users\root\source\repos\Lev\main.cpp (110):
+
+    108:     {
+    109:     txBegin();
+=>  110:     txBitBlt (txDC(), 0, 0, 1366, 780, BG, 0, 0);
+    111:     Win32::TransparentBlt (txDC(), 700, 50, 600, 700, Map, 0, 0, 600, 700, TX_WHITE);
+    112: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2022 22:16:54, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2022 22:18:03
+
+Run file:	C:\Документы\!\Инженерка\С++\Group_2_1\Мустафин Лев\Lev\bin\Debug\Lev.exe
+Directory:	C:\Документы\!\Инженерка\С++\Group_2_1\Мустафин Лев\Lev\bin\Debug
+
+--------------------------------------------------
